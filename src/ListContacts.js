@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 
-class ListContacts extends Component {
-    render() {
-
-        console.log('=====>>list of props', this.props);
+const ListContacts = (props)=> {
       return (
 <ol className='contact-list'>
-    {this.props.contacts.map((contact)=>(
+    {props.contacts.map((contact)=>(
         <li key={contact.id} className='contact-list-item'>
 
            <div className='contact-avatar' style={{
@@ -18,13 +15,13 @@ class ListContacts extends Component {
         <p>{contact.name}</p>
         <p>{contact.handle}</p>
            </div>
-           <div className='contact-remove'>Remove</div>
+           <div className='contact-remove' onClick={()=>props.onDeleteContact(contact)}>Remove</div>
         </li>
     ))}
 
 </ol>
       );
-    }
+
   }
   
   export default ListContacts;
